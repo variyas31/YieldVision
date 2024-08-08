@@ -5,7 +5,7 @@ This repository features an in-depth analysis of a large agricultural dataset us
 🔗 **[Download the dataset](https://drive.google.com/drive/folders/1FuE-idAFkLtRukpDCAA9N1TZ-fxwo-EX?usp=drive_link)**
 
 ## 📑 Table of Contents
-- [📜 Introduction](#introduction)
+- [📜 Introduction](##📜Introduction)
 - [⚙️ Installation](#installation)
 - [🚀 Usage](#usage)
 - [💻 Tech Requirements](#tech-requirements)
