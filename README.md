@@ -1,20 +1,30 @@
-# 🌾📊 YieldVision: Agricultural Yield Analysis with Machine Learning 🌾📊
+# 🌾📊 Agricultural Yield Analysis with Machine Learning 🌾📊
 
 This repository features an in-depth analysis of a large agricultural dataset using advanced machine learning and causal inference techniques. The main goal is to understand the factors influencing crop yield and accurately predict it based on weather conditions, soil properties, and farming practices.
 
 🔗 **[Download the dataset](https://drive.google.com/drive/folders/1FuE-idAFkLtRukpDCAA9N1TZ-fxwo-EX?usp=drive_link)**
 
 ## 📑 Table of Contents
-- [📜 Introduction](##📜Introduction)
+- [📜 Introduction](#introduction)
 - [⚙️ Installation](#installation)
 - [🚀 Usage](#usage)
 - [💻 Tech Requirements](#tech-requirements)
 - [📊 Dataset Details](#dataset-details)
+- [📈 Analysis and Methods](#analysis-and-methods)
 - [🤝 Contributing](#contributing)
 - [📄 License](#license)
 
 ## 📜 Introduction
-This repository contains a comprehensive analysis of a large agricultural dataset using advanced machine learning and causal inference techniques. The primary goal is to understand the factors influencing crop yield and to accurately predict yield based on various features such as weather conditions, soil properties, and agricultural practices.
+This notebook presents a comprehensive analysis of a large dataset using various machine learning and causal inference techniques. The primary goal of this project is to understand the factors influencing crop yield and to accurately predict yield based on available features.
+
+### Objectives
+1. **Data Preprocessing**: Handle missing values, standardize features, and prepare the data for modeling.
+2. **Exploratory Data Analysis (EDA)**: Perform visual and statistical analyses to uncover patterns and relationships in the data.
+3. **Feature Selection**: Identify the most relevant features for predictive modeling using techniques like Stepwise Forward Selection and Backward Elimination.
+4. **Modeling**: Apply multiple regression models, including Linear Regression, Lasso Regression, Ridge Regression, and Random Forest, to predict crop yield.
+5. **Model Evaluation**: Evaluate model performance using metrics such as Mean Squared Error (MSE) and R-squared (R²).
+6. **Causal Inference**: Utilize methods like DoWhy and Causal Forests to estimate the causal effect of selected features on crop yield.
+7. **Comparison of Models**: Compare the performance of different models and methods to identify the most effective approach for predicting crop yield.
 
 ## ⚙️ Installation
 To install the necessary libraries, run the following command:
@@ -33,16 +43,19 @@ pip install -r requirements.txt
 - 📦 Libraries specified in `requirements.txt`
 
 ## 📊 Dataset Details
-The dataset includes a variety of variables related to meteorological, soil, and crop factors. Below is an overview of these variables:
+The dataset contains various features that potentially impact crop yield, including weather conditions, soil properties, and agricultural practices. Key features include:
+- **soilCapacity**: Soil water holding capacity
+- **yield**: Crop yield
+- **EpSum, EpAfterFlowering, CGRAroundFlowering, EpSum_1**: Weather and growth-related metrics
 
-### APSIM Output Variables in a Nutshell
+### APSIM Output Variables
+APSIM’s text, space-separated output files can be flexibly configured. The time dimension is represented by rows, and the state dimension is represented by columns. Multiple independent output components can be configured in a simulation.
 
 #### Periodicity of Output:
-- **🕒 Rows (Temporal)**: Common periods include daily, weekly, harvest, and annual. Variables may need to be averaged or summed depending on the interval.
-- **📊 Columns**: APSIM's modules have variables that reflect their domain.
+- **🕒 Rows (Temporal)**: Common periods include daily, weekly, harvest, and annual (calendar). Each period is characterized by an event that marks its termination. Depending on this interval, variables may need to be averaged, summed, etc.
+- **📊 Columns**: APSIM’s modules have variables that can be reported.
 
 ### Table of Useful Variables:
-
 #### Meteorological 🌤️:
 - **🌧️ rain**: (mm/day)
 - **🌡️ maxt, mint**: (9 AM min, max temperatures)
@@ -59,7 +72,7 @@ The dataset includes a variety of variables related to meteorological, soil, and
 - **💨 EOS**: Potential (unlimited) soil evaporation limited by cover
 - **🌳 cover_surface_runoff**: Total cover from crops & residues, adjusted for height (0-1)
 - **🚰 Runoff**: Water that doesn’t infiltrate must run off
-- **🌊 Drain**: Water content above DUL drains into layers below. The bottom layer drains to ...
+- **🌊 Drain**: Water content above DUL drains into layers below. The bottom layer drains to...
 - **🍂 surfaceom_wt**: Surface residue - stubble & harvester remains (kg/ha)
 - **🧪 NO3**: Nitrogen - key plant nutrient (kg/ha), from both fertilizer and residue decomposition
 
@@ -91,6 +104,29 @@ The dataset includes a variety of variables related to meteorological, soil, and
 - **💧 Water Use Efficiency (WUE)**: Grain produced / water used (kg/mm)
 - **☀️ PhotoThermalQuotient (PTQ)**: Mean(radiation / mean temperature) over significant crop phases
 - **📊 NDVI vs. LAI**: LAI is the green component; NDVI is a reflectance
+
+## 📈 Analysis and Methods
+### Data Preprocessing
+Ensuring the dataset is clean and ready for analysis by handling missing values and scaling features appropriately.
+
+### Exploratory Data Analysis (EDA)
+Generating visualizations like pair plots, correlation heatmaps, and feature importance plots to understand the relationships between features and crop yield.
+
+### Feature Selection
+Using statistical techniques to identify the most important features for predictive modeling.
+
+### Model Training and Evaluation
+Applying different machine learning models to the dataset and evaluating their performance using various metrics.
+
+### Causal Inference
+Employing causal inference techniques to estimate the causal effects of key features on crop yield.
+
+### Visualizations
+- **Pair Plot**: Visualize relationships between several key continuous variables simultaneously.
+- **Correlation Heatmap**: Visualize the correlation coefficients between variables to identify features highly correlated with the target variable.
+- **Feature Importance Plot**: Identify which variables have the most influence on the target variable.
+- **Yield Over Years**: Scatter plot showing the distribution of yield values over the years.
+- **2D PCA**: Visualize the data in two dimensions using the first two principal components.
 
 ## 🤝 Contributing
 We welcome contributions! Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
