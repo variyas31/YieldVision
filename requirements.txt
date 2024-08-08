@@ -1,0 +1,12 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+geopandas
+shapely
+joblib
+pgmpy
+networkx
+shap
+category_encoders
