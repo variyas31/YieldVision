@@ -1,4 +1,5 @@
-# 🌾📊 Agricultural Yield Analysis with Machine Learning 🌾📊
+# 🌾📊 YieldVision: Advanced Machine Learning & Causal Analysis on Agricultural Yield Data 🌾📊
+
 
 This repository features an in-depth analysis of a large agricultural dataset using advanced machine learning and causal inference techniques. The main goal is to understand the factors influencing crop yield and accurately predict it based on weather conditions, soil properties, and farming practices.
 
