@@ -1,0 +1,82 @@
+    APSIM output variables in a nutshell
+
+Periodicity of output:
+
+Apsim's text, space separated output files can be flexibly configured. The time dimension is rows, the state dimension is columns. Multiple independant output components can be configured in a simulation.
+
+Rows - (temporal): Common periods include daily, pentad/weekly, harvest, annual (calendar). Each of these periods is characterised by an event that marks its termination. Depending on this interval, variables may need to be averaged, summed etc. This can be done with an apsim module called "Tracker", or in bespoke manager (ie runtime compiled C#) code.
+
+Columns: Apsim's modules have variables that can be reported. Modules have a concept of "ownership" - the variables that it maintains reflect the domain of that module.
+
+Table of useful variables:
+
+Meteorological
+rain         (mm/day)
+maxt, mint   (9AM min, max temperatures)
+radn         (Mj/m2) solar radiation
+
+
+Soil related
+dlayer      depth of layer i (array of mm)
+SW          instantaneous water content (mm/mm)
+Air_dry,LL15,DUL,SAT - Static limits of bucket size (array of mm/mm).
+XX_dep      - same as above, but in (array of mm / layer)
+ESW         Extractable soil water (mm) - relative to LL15
+ES          Soil evaporation (mm/day)
+EO          Potential (unlimited) soil evaporation
+EOS         Potential (unlimited) soil evaporation limited by cover 
+cover_surface_runoff - total cover from crops & residues, adjusted for height (0-1)
+Runoff      water that doesnt infiltrate must run off
+Drain       water content above DUL drains into layers below. The bottom layer drains to ...
+surfaceom_wt Surface residue - stubble & harvester remains (kg/ha)
+NO3         Nitrogen - key plant nutrient (kg/ha), comes from both fertiliser and residue
+            decomposition (from roots and organic C pools)
+
+
+
+Crop related. All weights are (oven) dry.
+
+biomass_wt  the total instantaneous weight (g/m2). 
+biomass_n   N content (g/m2). 
+[root, leaf, stem, grain]GreenWt: active plant organ weights. Some organs will 
+            have a significant SenescedWt - eg leaves at maturity.
+XXXGreenN   N content of organs (g/m2)
+cover_green Green (photsynthetically active) cover (0-1)
+cover_tot   Green and senesced cover (0-1)
+TT          Instantaneous Thermal Time (oC/day) - development rate.
+Ep          Water uptake (mm)
+Height      Height of crop (mm) - often simplistic.
+LAI         Leaf Area Index - the area available to soak up radiation (m2/m2), will 
+            exceed cover (0-1). 
+FiPAR		fraction of intercepted photosynthetically active radiation
+SLAI        Senesced leaf area index (m2/m2)
+LL          (crop specific) lower limit of water extraction (array of mm/mm)
+nfact_photo Instantaneous stress factor in photosynthesis calcaultion (0-1)
+root_depth  Depth that roots extend to (mm)
+swdef_photo Soil water deficit factor in photosynthesis calc (0-1)
+StageName   The (instant) phenological stage name.
+Yield       Grain yield (kg/ha)
+
+
+Useful summaries
+
+Crop starting & finishing water content - used to calculate gross Water Uptake (from field
+            trials) = start + rain - finishing
+
+in-crop water uptake - a key measure of transpiration : either sum of Ep, or from soil water 
+            calc above.
+
+PAWC        Plant Available Water [Capacity|Content] (mm). Capacity refers to static 
+            capacity, content some instantaneous value. Crop specific, relative to 
+            crop LL, includes soil toxicity constraints that aren't in LL15
+
+Harvest Index (HI) - grain yield / total weight - efficiency measure.
+
+Water Use Efficiency (WUE) - grain produced / water used (kg/mm) - index of production
+            effectiveness
+
+PhotoThermalQuotient (PTQ) - mean(radiation / mean temperature) over significant crop 
+            phases (eg grainfilling)
+
+NDVI != LAI. LAI is the green component, ndvi is a reflectance. There are 
+            approximations that usually ignore yellow grains.
