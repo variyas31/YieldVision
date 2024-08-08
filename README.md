@@ -4,6 +4,7 @@
 This repository features an in-depth analysis of a large agricultural dataset using advanced machine learning and causal inference techniques. The main goal is to understand the factors influencing crop yield and accurately predict it based on weather conditions, soil properties, and farming practices.
 
 🔗 **[Download the dataset](https://drive.google.com/drive/folders/1FuE-idAFkLtRukpDCAA9N1TZ-fxwo-EX?usp=drive_link)**
+🔗 **[Download/Copy the Jupyter Notebook]([https://drive.google.com/drive/folders/1FuE-idAFkLtRukpDCAA9N1TZ-fxwo-EX?usp=drive_link](https://github.com/variyas31/YieldVision/blob/main/YieldVision%20Notebook.ipynb)**
 
 ## 📑 Table of Contents
 - [📜 Introduction](#introduction)
